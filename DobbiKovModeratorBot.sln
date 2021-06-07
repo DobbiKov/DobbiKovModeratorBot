@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DobbiKovModeratorBot.ConsoleApp", "DobbiKovModeratorBot.ConsoleApp\DobbiKovModeratorBot.ConsoleApp.csproj", "{5B2DF1F1-3910-40A7-BE98-471E638049BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DobbiKovModeratorBot.Application", "DobbiKovModeratorBot.Application\DobbiKovModeratorBot.Application.csproj", "{0F808C40-43E5-46B1-A8C2-00BAD61AC7E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B2DF1F1-3910-40A7-BE98-471E638049BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B2DF1F1-3910-40A7-BE98-471E638049BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B2DF1F1-3910-40A7-BE98-471E638049BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B2DF1F1-3910-40A7-BE98-471E638049BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F808C40-43E5-46B1-A8C2-00BAD61AC7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F808C40-43E5-46B1-A8C2-00BAD61AC7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F808C40-43E5-46B1-A8C2-00BAD61AC7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F808C40-43E5-46B1-A8C2-00BAD61AC7E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {171CCA9E-402C-4B90-86CA-1FC0C06AFF51}
+	EndGlobalSection
+EndGlobal
