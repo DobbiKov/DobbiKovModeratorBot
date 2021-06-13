@@ -6,12 +6,20 @@ using Telegram.Bot;
 using Telegram.Bot.Types;
 using System.Linq;
 using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
+using DobbiKovModeratorBot.Domain.Enums;
+using DobbiKovModeratorBot.Domain.Types;
 
 namespace DobbiKovModeratorBot.Application.Commands
 {
     public class BanCommand : Command
     {
         public override string[] Names { get; set; } = new string[] { "ban", "бан" };
+
+        public void exec()
+        {
+
+        }
 
         public override async Task Execute(Message message, ITelegramBotClient client)
         {
@@ -36,7 +44,7 @@ namespace DobbiKovModeratorBot.Application.Commands
 
             if (message.ReplyToMessage.From.IsBot)
             {
-                await client.SendTextMessageAsync(message.Chat.Id, "Бот не может разблокировать бота. Вы можете это сделать самостоятельно!");
+                await client.SendTextMessageAsync(message.Chat.Id, "Бот не может заблокировать бота. Вы можете это сделать самостоятельно!");
                 return;
             }
 
@@ -51,18 +59,16 @@ namespace DobbiKovModeratorBot.Application.Commands
                 await client.SendTextMessageAsync(message.Chat.Id, "Пользователь, которого вы хотите кикнуть является администратором.");
                 return;
             }
-
-            try
-            {
-                await client.KickChatMemberAsync(message.Chat.Id, message.ReplyToMessage.From.Id);
-            }
-            catch
-            {
-                await client.SendTextMessageAsync(message.Chat.Id, "Произошла ошибка, возможно бот не является администратором.");
-                return;
-            }
-
-            await client.SendTextMessageAsync(message.Chat.Id, $"Пользователь {message.ReplyToMessage.From.FirstName ?? ""} {message.ReplyToMessage.From.LastName ?? ""} был изгнан из беседы.");
+            Console.WriteLine("tut");
+            var inlineKeyboard = new InlineKeyboardMarkup(new[] {
+                new[]
+                {
+                    InlineKeyboardButton.WithCallbackData("Да", KeyboardIdenifiers.GetIdentifier(KeyboardIdentifier.banCommandYes)),
+                    InlineKeyboardButton.WithCallbackData("Нет", KeyboardIdenifiers.GetIdentifier(KeyboardIdentifier.banCommandNo))
+                }
+            });
+            var newMessage = await client.SendTextMessageAsync(message.Chat.Id, $"Вы уверенны, что хотите кикнуть пользователя {message.ReplyToMessage.From.Username ?? message.ReplyToMessage.From.FirstName}?", replyMarkup: inlineKeyboard);
+            CommandHandler.keyboardMessages.Add( new KeyboardMessage(message.Chat.Id, newMessage, message) );
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DobbiKovModeratorBot.Domain.Types;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Telegram.Bot;
@@ -20,6 +21,16 @@ namespace DobbiKovModeratorBot.Application
                 }
             }
             return false;
+        }
+
+        public static KeyboardMessage GetKeyboardMessage(long chatId, Message botMessage)
+        {
+            foreach(var comm in CommandHandler.keyboardMessages)
+            {
+                if (comm.chatId == chatId && comm.messageFromBot.MessageId == botMessage.MessageId)
+                    return comm;
+            }
+            throw new Exception("Not message in List!");
         }
     }
 }

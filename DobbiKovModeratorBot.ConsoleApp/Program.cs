@@ -16,9 +16,17 @@ namespace DobbiKovModeratorBot.ConsoleApp
 
             client.StartReceiving();
             Console.WriteLine("Bot started.");
+            CommandHandler.Start();
             client.OnMessage += Client_OnMessage;
+            client.OnCallbackQuery += Client_OnCallbackQuery;
             Console.ReadLine();
             client.StopReceiving();
+        }
+
+        private static async void Client_OnCallbackQuery(object sender, CallbackQueryEventArgs e)
+        {
+            var callbackQuery = e.CallbackQuery;
+            await CommandHandler.CallbackExecute(callbackQuery, client);
         }
 
         private static async void Client_OnMessage(object sender, MessageEventArgs e)
